@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MelpApp Dashboard</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="app-container">
+			<!-- Sidebar Navigation -->
+			<nav class="sidebar">
+				<button class="close-btn" id="close-btn">✕</button>
+				<div class="logo">
+					<img src="assets/logo.svg" alt="MelpApp Logo" class="logo-img" />
+				</div>
+				<div class="user-profile">
+					<img src="assets/profile.jpg" alt="profile" class="profile-img" />
+					<span class="profile-name">User Name</span>
+				</div>
+				<ul class="nav-links">
+					<li>
+						<a href="#" class="active">
+							<span class="icon">
+								<img src="assets/recent.svg" alt="" />
+								Recent
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/contact.svg" alt="" />
+								Contacts
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/team.svg" alt="" />
+								Teams
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/group.svg" alt="" />
+								Groups
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/calendar.svg" alt="" />
+								Calendar
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/networking.svg" alt="" />
+								Network
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/drive.svg" alt="" />
+								Drive
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/more.svg" alt="" />
+								More
+							</span>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="nav-links" style="border-top: 1px solid rgba(0, 0, 0, 0.1)">
+					<li>
+						<a href="#" id="theme-toggle">
+							<span class="icon">
+								<img src="assets/moon.svg" alt="" id="theme-icon" />
+								<span id="theme-text">Dark Mode</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/setting.svg" alt="" />
+								Setting
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="icon">
+								<img src="assets/logout.svg" alt="" />
+								Logout
+							</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- Overlay -->
+			<div class="overlay" id="overlay"></div>
+
+			<!-- Main Content Area -->
+			<main class="main-content">
+				<!-- Header -->
+				<header class="top-bar">
+					<div class="top-bar-left">
+						<div class="hamburger" id="hamburger-btn">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+						<h1>Welcome, User Name</h1>
+					</div>
+
+					<div class="top-bar-center">
+						<div class="search-bar">
+							<input type="search" placeholder="Search" />
+						</div>
+					</div>
+
+					<div class="top-bar-right">
+						<div class="top-bar-actions">
+							<button class="btn-live-calls">LIVE CALLS</button>
+							<button class="icon-btn">
+								<img src="assets/setting.svg" alt="settings" />
+							</button>
+							<button class="icon-btn">
+								<img src="assets/notification.svg" alt="notifications" />
+							</button>
+							<button class="icon-btn">
+								<img src="assets/message.svg" alt="messages" />
+							</button>
+						</div>
+					</div>
+				</header>
+
+				<!-- Dashboard Grid -->
+				<div class="dashboard-grid">
+					<!-- Calendar Section -->
+					<section class="dashboard-card">
+						<h2>
+							<span class="icon">
+								<img src="assets/calendar.svg" alt="calendar icon" />
+								CALENDAR
+							</span>
+						</h2>
+						<div class="card-content">
+							<img
+								src="assets/Events-rafiki.svg"
+								alt="calendar illustration"
+								class="feature-image"
+							/>
+							<button class="btn-primary">CREATE MEETING</button>
+							<div class="calendar-connections">
+								<h3>CONNECT OTHER CALENDARS</h3>
+								<p>Sync Melp events across Google and Microsoft Calendars.</p>
+								<div class="calendar-buttons">
+									<button class="btn-google">
+										<img src="assets/google.svg" alt="google" />
+										Google
+									</button>
+									<button class="btn-microsoft">
+										<img src="assets/Microsoft.svg" alt="microsoft" />
+										Microsoft
+									</button>
+								</div>
+							</div>
+							<div class="calendar-link">
+								<h3>MY CALENDAR LINK</h3>
+								<p>
+									Copy and share your calendar link for easy appointment
+									booking.
+								</p>
+								<div class="copy-link">
+									<input
+										type="text"
+										value="https://sl.melp.us/data7407"
+										readonly
+									/>
+									<button>📋</button>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Personal Room Section -->
+					<section class="dashboard-card">
+						<h2>
+							<span class="icon">
+								<img src="assets/room1.svg" alt="room icon" /> PERSONAL ROOM
+							</span>
+						</h2>
+						<div class="card-content">
+							<img
+								src="assets/Video call-bro.svg"
+								alt="room illustration"
+								class="feature-image"
+							/>
+							<button class="btn-primary">GO TO ROOM</button>
+							<p>
+								Copy and share the link below to start an instant meeting with
+								people
+							</p>
+							<div class="copy-link">
+								<input
+									type="text"
+									value="https://sl.melp.us/data8896"
+									readonly
+								/>
+								<button>📋</button>
+							</div>
+						</div>
+					</section>
+
+					<!-- Create Team Section -->
+					<section class="dashboard-card">
+						<h2>
+							<span class="icon">
+								<img src="assets/team.svg" alt="team icon" />
+								CREATE TEAM
+							</span>
+						</h2>
+						<div class="card-content">
+							<img
+								src="assets/Team work-amico.svg"
+								alt="team illustration"
+								class="feature-image"
+							/>
+							<button class="btn-primary">CREATE TEAM</button>
+							<p>
+								Organize, discuss, and execute projects efficiently by creating
+								teams.
+							</p>
+						</div>
+					</section>
+
+					<!-- Invite Contacts Section -->
+					<section class="dashboard-card">
+						<h2>
+							<span class="icon">
+								<img src="assets/contact.svg" alt="contacts icon" />
+								INVITE CONTACTS
+							</span>
+						</h2>
+						<div class="card-content">
+							<img
+								src="assets/Invite-cuate.svg"
+								alt="invite illustration"
+								class="feature-image"
+							/>
+							<button class="btn-primary">INVITE</button>
+							<p>
+								Expand your network, invite colleagues, and build valuable
+								relationships.
+							</p>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

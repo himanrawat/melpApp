@@ -1,0 +1,605 @@
+html {
+	font-size: 100%;
+	height: 100%;
+}
+
+@media (max-width: 768px) {
+	html {
+		font-size: 90%;
+	}
+}
+
+@media (max-width: 480px) {
+	html {
+		font-size: 85%;
+	}
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	line-height: 1.5;
+	font-size: 1rem;
+	height: 100%;
+	overflow: hidden;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+	--primary-color: #e53935;
+	--secondary-color: #757575;
+	--background-color: #f5f5f5;
+	--card-background: #ffffff;
+	--text-color: #333333;
+	--sidebar-width: 15rem;
+	--header-height: 4rem;
+	--border-radius: 0.5rem;
+	--spacing-unit: 1rem;
+	--border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+	--background-color: #121212;
+	--card-background: #1e1e1e;
+	--text-color: #ffffff;
+	--secondary-color: #a0a0a0;
+	--border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* For dark mode, change icon colors to primary color */
+[data-theme="dark"] .nav-links li a:not(:hover):not(.active) img {
+	filter: invert(37%) sepia(74%) saturate(7482%) hue-rotate(341deg)
+		brightness(85%) contrast(98%);
+}
+
+/* Keep the theme toggle icon white in dark mode */
+[data-theme="dark"] #theme-toggle:not(:hover) img {
+	filter: invert(1) !important;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* App Container */
+.app-container {
+	height: 100%;
+	padding-left: var(--sidebar-width);
+}
+
+/* Sidebar Styles */
+.sidebar {
+	background-color: var(--card-background);
+	padding: var(--spacing-unit);
+	border-right: 1px solid var(--border-color);
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: var(--sidebar-width);
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto; /* Add scroll for overflow content */
+}
+
+.sidebar,
+.top-bar,
+.dashboard-card {
+	transition: background-color 0.3s ease;
+}
+
+/* Style for the theme toggle */
+#theme-toggle {
+	cursor: pointer;
+}
+
+#theme-toggle img {
+	transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] #theme-toggle img {
+	filter: invert(1);
+}
+
+.logo {
+	text-align: center;
+	/* margin-bottom: var(--spacing-unit); */
+}
+
+.logo-img {
+	width: 7.5rem;
+	height: 7.5rem;
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	padding: var(--spacing-unit) 0;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.nav-links[style*="border-top"] {
+	border-top: 1px solid var(--border-color) !important;
+}
+
+.profile-img {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	margin-right: var(--spacing-unit);
+}
+
+.nav-links {
+	list-style: none;
+	margin-top: var(--spacing-unit);
+}
+
+.nav-links li a {
+	display: flex;
+	align-items: center;
+	padding: 0.75rem var(--spacing-unit);
+	color: var(--text-color);
+	text-decoration: none;
+	border-radius: var(--border-radius);
+	margin: 0.25rem 0;
+	transition: all 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+.nav-links li a:hover img,
+.nav-links li a.active img {
+	filter: brightness(0) invert(1) !important;
+}
+
+.icon {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.icon img {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+/* Main Content */
+.main-content {
+	height: 100%;
+	overflow-y: auto;
+	padding: var(--spacing-unit);
+}
+
+/* Top Bar Styles */
+.top-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-unit);
+	background-color: var(--card-background);
+	border-radius: var(--border-radius);
+	margin-bottom: var(--spacing-unit);
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.top-bar-left {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	min-width: 200px;
+}
+
+.top-bar-left h1 {
+	font-size: 1.25rem;
+	white-space: nowrap;
+}
+
+.top-bar-center {
+	flex: 1;
+	min-width: 200px;
+}
+
+.top-bar-right {
+	display: flex;
+	align-items: center;
+}
+
+.search-bar {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.search-bar input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	font-size: 1rem;
+	background-color: var(--card-background);
+	color: var(--text-color);
+	transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .search-bar input {
+	background-color: #2d2d2d;
+}
+
+.search-bar input::placeholder {
+	color: var(--secondary-color);
+}
+
+.top-bar-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.btn-live-calls {
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	transition: background-color 0.3s ease;
+}
+
+.btn-live-calls:hover {
+	background-color: #d32f2f;
+}
+
+.icon-btn {
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	border-radius: var(--border-radius);
+	transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+	background-color: var(--border-color);
+}
+
+.icon-btn img {
+	width: 1.25rem;
+	height: 1.25rem;
+	transition: filter 0.3s ease;
+	filter: none;
+}
+
+[data-theme="dark"] .icon-btn img {
+	filter: invert(37%) sepia(74%) saturate(7482%) hue-rotate(341deg)
+		brightness(85%) contrast(98%);
+}
+
+.icon-btn:hover img {
+	filter: invert(37%) sepia(74%) saturate(7482%) hue-rotate(341deg)
+		brightness(85%) contrast(98%);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+	gap: var(--spacing-unit);
+	padding: var(--spacing-unit);
+}
+
+.dashboard-card {
+	background-color: var(--card-background);
+	border-radius: var(--border-radius);
+	padding: var(--spacing-unit);
+	box-shadow: 0 2px 4px var(--border-color);
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Content */
+.card-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-unit);
+}
+
+.card-content p {
+	color: var(--text-color);
+}
+
+.feature-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: var(--spacing-unit);
+}
+
+/* Card Headers */
+.dashboard-card h2 {
+	color: var(--text-color);
+}
+
+.dashboard-card h3 {
+	color: var(--text-color);
+}
+
+/* Icons in Cards */
+.dashboard-card .icon img {
+	transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .dashboard-card .icon img {
+	filter: invert(37%) sepia(74%) saturate(7482%) hue-rotate(341deg)
+		brightness(85%) contrast(98%);
+}
+
+/* Buttons */
+.btn-primary {
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+	background-color: #d32f2f;
+}
+
+/* Calendar Connect Buttons */
+.calendar-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 1rem;
+	margin: 2rem 0;
+}
+
+.btn-google,
+.btn-microsoft {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--primary-color);
+	padding: 4px 8px;
+	cursor: pointer;
+	background-color: var(--card-background);
+	color: var(--text-color);
+	transition: all 0.3s ease;
+}
+
+.btn-google:hover,
+.btn-microsoft:hover {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+.btn-google img,
+.btn-microsoft img {
+	width: 28px;
+}
+
+/* Copy Link Section */
+.copy-link {
+	width: 100%;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.copy-link button {
+	width: fit-content;
+	border: 1px solid var(--border-color);
+	padding: 4px;
+	height: 28px;
+	background-color: var(--card-background);
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.copy-link input {
+	width: 80%;
+	border: 1px solid var(--border-color);
+	padding: 4px;
+	height: 28px;
+	background-color: var(--card-background);
+	color: var(--text-color);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .copy-link input,
+[data-theme="dark"] .copy-link button {
+	background-color: #2d2d2d;
+}
+
+[data-theme="dark"] .copy-link button:hover {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .dashboard-card {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .feature-image {
+	filter: brightness(0.9);
+}
+
+[data-theme="dark"] .btn-google img,
+[data-theme="dark"] .btn-microsoft img {
+	filter: brightness(0.9);
+}
+/* Hamburger Menu */
+.hamburger {
+	display: none;
+	flex-direction: column;
+	gap: 0.25rem;
+	cursor: pointer;
+}
+
+.hamburger span {
+	width: 1.5rem;
+	height: 0.125rem;
+	background-color: var(--text-color);
+	transition: all 0.3s ease;
+}
+
+/* Close Button */
+.close-btn {
+	display: none;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	color: var(--text-color);
+}
+
+/* Overlay */
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 998;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+	.top-bar {
+		gap: 0.75rem;
+	}
+
+	.search-bar {
+		max-width: 400px;
+	}
+}
+
+@media (max-width: 768px) {
+	body {
+		overflow: auto;
+	}
+
+	.app-container {
+		padding-left: 0;
+		height: auto;
+	}
+
+	.sidebar {
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;
+	}
+
+	.sidebar.active {
+		transform: translateX(0);
+	}
+
+	.close-btn {
+		display: block;
+	}
+
+	.hamburger {
+		display: flex;
+	}
+
+	.top-bar {
+		flex-direction: column;
+		align-items: stretch;
+		padding: 0.75rem;
+	}
+
+	.top-bar-left,
+	.top-bar-center,
+	.top-bar-right {
+		width: 100%;
+	}
+
+	.top-bar-right {
+		justify-content: flex-start;
+	}
+
+	.search-bar {
+		max-width: none;
+	}
+
+	.top-bar-actions {
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.main-content {
+		height: auto;
+		overflow: visible;
+	}
+
+	.overlay {
+		display: block;
+	}
+}
+
+@media (max-width: 480px) {
+	.top-bar {
+		padding: 0.5rem;
+	}
+
+	.top-bar-left h1 {
+		font-size: 1.125rem;
+	}
+
+	.btn-live-calls {
+		padding: 0.5rem 0.75rem;
+		font-size: 0.75rem;
+	}
+
+	.icon-btn {
+		width: 2rem;
+		height: 2rem;
+		padding: 0.375rem;
+	}
+
+	.icon-btn img {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.dashboard-grid {
+		grid-template-columns: 1fr;
+	}
+}
